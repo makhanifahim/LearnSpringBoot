@@ -10,11 +10,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-class UnitOfMeasureRepositoriesIT {
+public class UnitOfMeasureRepositoriesTest {
+
     @Autowired
     UnitOfMeasureRepositories unitOfMeasureRepository;
 
