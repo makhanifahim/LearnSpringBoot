@@ -3,11 +3,11 @@ package com.example.RecipeApp.domain;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Set;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class CategoryTest {
 
-class CategoryTest {
     Category category;
 
     @Before
@@ -27,5 +27,4 @@ class CategoryTest {
     @Test
     public void getDescription() throws Exception {
     }
-
 }
