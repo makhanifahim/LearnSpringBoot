@@ -3,6 +3,7 @@ package com.example.RecipeApp.services;
 import com.example.RecipeApp.converters.RecipeCommandToRecipe;
 import com.example.RecipeApp.converters.RecipeToRecipeCommand;
 import com.example.RecipeApp.domain.Recipe;
+import com.example.RecipeApp.exceptions.NotFoundException;
 import com.example.RecipeApp.repositories.RecipeRepositories;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,5 +73,20 @@ public class RecipeServiceImplTest {
         recipeService.deleteById(idToDelete);
 
         verify(recipeRepository,times(1)).deleteById(anyLong());
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception{
+        Optional<Recipe> recipeOptional=Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+        Recipe recipeReturned = recipeService.findById(1L);
+    }
+
+    @Test
+    public void testGetRecipeNotFound() throws Exception{
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
     }
 }
